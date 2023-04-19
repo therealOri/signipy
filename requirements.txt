@@ -1,0 +1,7 @@
+beaupy==3.5.2
+commonmark==0.9.1
+emoji==2.2.0
+Pygments==2.15.1
+pystyle==2.9
+python-yakh==0.3.1
+rich==12.6.0
