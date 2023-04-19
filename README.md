@@ -9,7 +9,7 @@ __ __
 ```
 git clone https://github.com/therealOri/signipy.git
 cd signipy
-virtualenc sgnENV
+virtualenv sgnENV
 source sgnENV/bin/activate
 pip install -r requirements.txt
 python signipy.py
