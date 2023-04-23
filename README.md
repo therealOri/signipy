@@ -25,6 +25,17 @@ __ __
 For windows users.
 - [Python](https://www.python.org/)
 > `Downloads>>Windows>>Latest python3 release>>Scroll all the way down>>windows installer 64 bit`
+
+<br >
+
+- [Signify](https://github.com/aperezdc/signify)
+
+> Some GNU/Linux distributions have readily available packages in their repositories. 
+> 
+> It is recommended to use these, unless you absolutely need to build from source code:
+
+-   Debian: `apt install signify-openbsd`
+-   Arch Linux: `pacman -S signify`
 __ __
 
 <br>
