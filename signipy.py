@@ -101,13 +101,4 @@ def main():
 
 if __name__ == '__main__':
     clear()
-    required_tools = ["signify"]
-    for tool in required_tools:
-        try:
-            os.system(f"{tool} --help")
-        except Exception as e:
-            print(f'"{tool}" is not installed. Please install it before running this program.\n{e}')
-            sys.exit(1)
-
-    clear()
     main()
