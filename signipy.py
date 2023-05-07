@@ -51,6 +51,9 @@ def main():
         if main_options[0] in main_option:
             clear()
             passphrase_check = beaupy.confirm("Do you want to have a passphrase? - (to protect the secret key)")
+            if passphrase_check == None:
+                clear()
+                continue
             if passphrase_check == True:
                 print("Generating keypair...")
                 execmd("signify -G -p keyname.pub -s keyname.sec")
@@ -64,9 +67,25 @@ def main():
 
         if main_options[1] in main_option:
             clear()
-            file_to_sign = beaupy.prompt("Please provide file to sign. - (drag & drop)").replace("\\", " ").strip()
-            sec_key_file = beaupy.prompt("Please provide your .sec key file. - (drag & drop)").replace("\\", " ").strip()
+            file_to_sign = beaupy.prompt("Please provide file to sign. - (drag & drop)")
+            if not file_to_sign:
+                clear()
+                continue
+            else:
+                file_to_sign = file_to_sign.replace("\\", " ").strip()
+
+            sec_key_file = beaupy.prompt("Please provide your .sec key file. - (drag & drop)")
+            if not sec_key_file:
+                clear()
+                continue
+            else:
+                sec_key_file = sec_key_file.replace("\\", " ").strip()
+
             tar_check = beaupy.confirm("Is this a .tar.gz archive file?")
+            if tar_check == None:
+                clear()
+                continue
+
             if tar_check == True:
                 execmd(f"signify -z -S -s {sec_key_file} -m {file_to_sign}")
             else:
@@ -78,11 +97,30 @@ def main():
 
         if main_options[2] in main_option:
             clear()
-            pub_key_file = beaupy.prompt("Please provide your .pub key file. - (drag & drop)").replace("\\", " ").strip()
-            signature_file = beaupy.prompt("Please provide the .sig file for the file you want to verify. - (drag & drop)").replace("\\", " ").strip()
-            file_to_verify = beaupy.prompt("Please provide the file you want to verify. - (drag & drop)").replace("\\", " ").strip()
+            pub_key_file = beaupy.prompt("Please provide your .pub key file. - (drag & drop)")
+            if not pub_key_file:
+                clear()
+                continue
+            pub_key_file = pub_key_file.replace("\\", " ").strip()
+
+            signature_file = beaupy.prompt("Please provide the .sig file for the file you want to verify. - (drag & drop)")
+            if not signature_file:
+                clear()
+                continue
+            signature_file = signature_file.replace("\\", " ").strip()
+
+            file_to_verify = beaupy.prompt("Please provide the file you want to verify. - (drag & drop)")
+            if not file_to_verify:
+                clear()
+                continue
+            file_to_verify = file_to_verify.replace("\\", " ").strip()
+
             clear()
             tar_check = beaupy.confirm("Is this a .tar.gz archive file?")
+            if tar_check == None:
+                clear()
+                continue
+
             if tar_check == True:
                 execmd(f"signify -z -V -p {pub_key_file} -x {signature_file} -m {file_to_verify}")
             else:
